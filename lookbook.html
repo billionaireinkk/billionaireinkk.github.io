@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lookbook · BillionaireInkk</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#000;font-family:'Georgia',serif;color:#faf8f1;}
+.wrap{max-width:480px;margin:0 auto;padding:2.5rem 1.5rem;}
+.back{display:inline-block;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#a09890;text-decoration:none;margin-bottom:2rem;border:0.5px solid #a09890;padding:6px 12px;}
+.back:hover{color:#faf8f1;border-color:#faf8f1;}
+.header{text-align:center;margin-bottom:2rem;}
+.logo{width:80px;height:100px;object-fit:contain;margin:0 auto 1rem;display:block;}
+.brand{font-size:20px;font-weight:400;letter-spacing:0.22em;color:#faf8f1;text-transform:uppercase;margin-bottom:4px;}
+.sub{font-size:10px;letter-spacing:0.18em;color:#a09890;text-transform:uppercase;}
+.divider{width:40px;height:0.5px;background:#a09890;margin:1.25rem auto;}
+.intro{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#a09890;text-align:center;margin-bottom:2rem;line-height:1.8;}
+.tabs{display:flex;gap:1px;background:#a09890;border:0.5px solid #a09890;margin-bottom:2rem;}
+.tab{flex:1;padding:12px 2px;font-size:8px;letter-spacing:0.08em;text-transform:uppercase;color:#a09890;text-align:center;cursor:pointer;background:#000;transition:all 0.2s;border:none;font-family:'Georgia',serif;}
+.tab:hover{color:#faf8f1;}
+.tab.active{background:#faf8f1;color:#000;}
+.category{display:none;}
+.category.active{display:block;}
+.cat-price{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#a09890;margin-bottom:4px;}
+.cat-desc{font-size:11px;color:#a09890;letter-spacing:0.08em;line-height:1.8;margin-bottom:1.5rem;}
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:2rem;}
+.photo-card{position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;}
+.photo-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;}
+.photo-card:hover img{transform:scale(1.03);}
+.overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.75));padding:1rem 0.75rem 0.75rem;opacity:0;transition:opacity 0.3s;}
+.photo-card:hover .overlay{opacity:1;}
+.overlay-text{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#faf8f1;}
+.book-cta{border:0.5px solid #a09890;padding:1.75rem 1.5rem;text-align:center;margin-bottom:1rem;}
+.cta-title{font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#faf8f1;margin-bottom:6px;}
+.cta-sub{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#a09890;margin-bottom:1.25rem;line-height:1.8;}
+.book-btn{display:block;width:100%;background:#faf8f1;color:#000;padding:13px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border:none;font-family:'Georgia',serif;text-decoration:none;}
+.book-btn:hover{background:#e8e5dc;}
+.coming{border:0.5px solid #a09890;padding:3rem 1.5rem;text-align:center;margin-bottom:2rem;}
+.coming p{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#a09890;line-height:2;}
+.footer{text-align:center;padding-top:1rem;}
+.footer-handle{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#a09890;}
+.lightbox{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.96);z-index:999;align-items:center;justify-content:center;flex-direction:column;padding:2rem;}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:100%;max-height:75vh;object-fit:contain;}
+.lb-close{position:absolute;top:1.5rem;right:1.5rem;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#a09890;cursor:pointer;border:0.5px solid #a09890;padding:6px 12px;background:none;}
+.lb-close:hover{color:#faf8f1;border-color:#faf8f1;}
+.lb-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#a09890;margin-top:1rem;text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">← Back</a>
+  <div class="header">
+    <img class="logo" src="images/logo.png" alt="BillionaireInkk"/>
+    <p class="brand">BillionaireInkk</p>
+    <p class="sub">Lookbook · Atlanta, GA</p>
+    <div class="divider"></div>
+    <p class="intro">Browse by service below.<br>See something you love? Book it directly.</p>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('script')">Script</button>
+    <button class="tab" onclick="switchTab('small')">Small</button>
+    <button class="tab" onclick="switchTab('medium')">Medium</button>
+    <button class="tab" onclick="switchTab('halfday')">Half Day</button>
+    <button class="tab" onclick="switchTab('fullday')">Full Day</button>
+  </div>
+
+  <!-- SCRIPT -->
+  <div class="category active" id="cat-script">
+    <p class="cat-price">Starting at $180 · $50 deposit</p>
+    <p class="cat-desc">Fine line, old english, cursive & custom lettering. Black ink or color — every word placed with intention.</p>
+    <div class="photo-grid">
+      <div class="photo-card" onclick="openLb('images/s1.jpg','godspeed · wrist · fine line')"><img src="images/s1.jpg" alt="godspeed"/><div class="overlay"><p class="overlay-text">godspeed · wrist</p></div></div>
+      <div class="photo-card" onclick="openLb('images/s2.jpg','Angel · forehead · old english')"><img src="images/s2.jpg" alt="Angel"/><div class="overlay"><p class="overlay-text">Angel · forehead</p></div></div>
+      <div class="photo-card" onclick="openLb('images/s3.jpg','love yourself · forearm · red ink')"><img src="images/s3.jpg" alt="love yourself"/><div class="overlay"><p class="overlay-text">love yourself · forearm</p></div></div>
+      <div class="photo-card" onclick="openLb('images/s4.jpg','Jehovah · hand · red ink')"><img src="images/s4.jpg" alt="Jehovah"/><div class="overlay"><p class="overlay-text">Jehovah · hand</p></div></div>
+      <div class="photo-card" onclick="openLb('images/s5.jpg','Brandon · thigh · red cursive')"><img src="images/s5.jpg" alt="Brandon"/><div class="overlay"><p class="overlay-text">Brandon · thigh</p></div></div>
+    </div>
+    <div class="book-cta">
+      <p class="cta-title">Book Your Script</p>
+      <p class="cta-sub">Starting at $180 · $50 deposit required</p>
+      <a class="book-btn" href="book.html">Book Now →</a>
+    </div>
+  </div>
+
+  <!-- SMALL -->
+  <div class="category" id="cat-small">
+    <p class="cat-price">$180 – $220 · $50 deposit</p>
+    <p class="cat-desc">Up to 4 inches. Detailed, intentional small pieces with big impact.</p>
+    <div class="photo-grid">
+      <div class="photo-card" onclick="openLb('images/sm1.jpg','Eiffel Tower · forearm')"><img src="images/sm1.jpg" alt="Eiffel Tower"/><div class="overlay"><p class="overlay-text">Eiffel Tower · forearm</p></div></div>
+      <div class="photo-card" onclick="openLb('images/sm2.png','butterfly · forearm · black & grey')"><img src="images/sm2.png" alt="butterfly"/><div class="overlay"><p class="overlay-text">butterfly · forearm</p></div></div>
+      <div class="photo-card" onclick="openLb('images/m3.png','cross with red lilies · ankle')"><img src="images/m3.png" alt="cross lilies"/><div class="overlay"><p class="overlay-text">cross & lilies · ankle</p></div></div>
+    </div>
+    <div class="book-cta">
+      <p class="cta-title">Book Your Small Piece</p>
+      <p class="cta-sub">$180 – $220 · $50 deposit required</p>
+      <a class="book-btn" href="book.html">Book Now →</a>
+    </div>
+  </div>
+
+  <!-- MEDIUM -->
+  <div class="category" id="cat-medium">
+    <p class="cat-price">$350+ · $50 deposit</p>
+    <p class="cat-desc">4 – 7 inches. More detail, more coverage, more statement.</p>
+    <div class="photo-grid">
+      <div class="photo-card" onclick="openLb('images/m1.png','lily flowers · shoulder · black & grey')"><img src="images/m1.png" alt="lily shoulder"/><div class="overlay"><p class="overlay-text">lily flowers · shoulder</p></div></div>
+      <div class="photo-card" onclick="openLb('images/m2.png','butterfly with florals · forearm')"><img src="images/m2.png" alt="butterfly florals"/><div class="overlay"><p class="overlay-text">butterfly florals · forearm</p></div></div>
+      <div class="photo-card" onclick="openLb('images/sm3.png','breathe · blue butterflies · forearm')"><img src="images/sm3.png" alt="breathe"/><div class="overlay"><p class="overlay-text">breathe · forearm</p></div></div>
+      <div class="photo-card" onclick="openLb('images/m4.png','mandala lotus with moon · forearm')"><img src="images/m4.png" alt="mandala lotus"/><div class="overlay"><p class="overlay-text">mandala lotus · forearm</p></div></div>
+      <div class="photo-card" onclick="openLb('images/m5.png','mandala wristband · hand/wrist')"><img src="images/m5.png" alt="mandala wrist"/><div class="overlay"><p class="overlay-text">mandala · wrist</p></div></div>
+      <div class="photo-card" onclick="openLb('images/m6.png','rose with red butterflies · forearm')"><img src="images/m6.png" alt="rose butterflies"/><div class="overlay"><p class="overlay-text">rose & butterflies · forearm</p></div></div>
+      <div class="photo-card" onclick="openLb('images/s6.png','spine script with florals · back')"><img src="images/s6.png" alt="spine script"/><div class="overlay"><p class="overlay-text">spine script · back</p></div></div>
+    </div>
+    <div class="book-cta">
+      <p class="cta-title">Book Your Medium Piece</p>
+      <p class="cta-sub">Starting at $350 · $50 deposit required</p>
+      <a class="book-btn" href="book.html">Book Now →</a>
+    </div>
+  </div>
+
+  <!-- HALF DAY -->
+  <div class="category" id="cat-halfday">
+    <p class="cat-price">$600 · $150 deposit · up to 4 hours</p>
+    <p class="cat-desc">Larger, more involved pieces that need dedicated time and detail.</p>
+    <div class="photo-grid">
+      <div class="photo-card" onclick="openLb('images/h1.png','snake with orchids · forearm')"><img src="images/h1.png" alt="snake orchids"/><div class="overlay"><p class="overlay-text">snake & orchids · forearm</p></div></div>
+      <div class="photo-card" onclick="openLb('images/h2.png','floral hand piece · red butterflies')"><img src="images/h2.png" alt="floral hand"/><div class="overlay"><p class="overlay-text">florals & butterflies · hand</p></div></div>
+      <div class="photo-card" onclick="openLb('images/h4.png','floral thigh piece · black & grey')"><img src="images/h4.png" alt="floral thigh"/><div class="overlay"><p class="overlay-text">floral thigh · black & grey</p></div></div>
+      <div class="photo-card" onclick="openLb('images/h6.png','cherub angel · chest · realism')"><img src="images/h6.png" alt="cherub chest"/><div class="overlay"><p class="overlay-text">cherub · chest</p></div></div>
+    </div>
+    <div class="book-cta">
+      <p class="cta-title">Book a Half Day</p>
+      <p class="cta-sub">$600 · $150 deposit · up to 4 hours</p>
+      <a class="book-btn" href="book.html">Book Now →</a>
+    </div>
+  </div>
+
+  <!-- FULL DAY -->
+  <div class="category" id="cat-fullday">
+    <p class="cat-price">$1,250 · $200 deposit · up to 8 hours</p>
+    <p class="cat-desc">Large scale statement pieces. Full sleeves, thigh pieces, back work — go all in.</p>
+    <div class="photo-grid">
+      <div class="photo-card" onclick="openLb('images/f1.png','clock with eye & roses · forearm sleeve')"><img src="images/f1.png" alt="clock sleeve"/><div class="overlay"><p class="overlay-text">clock & roses · sleeve</p></div></div>
+      <div class="photo-card" onclick="openLb('images/f2.png','geisha figure · shin · linework')"><img src="images/f2.png" alt="geisha shin"/><div class="overlay"><p class="overlay-text">geisha · shin</p></div></div>
+      <div class="photo-card" onclick="openLb('images/f3.png','dragon with red peonies · thigh')"><img src="images/f3.png" alt="dragon thigh"/><div class="overlay"><p class="overlay-text">dragon & peonies · thigh</p></div></div>
+      <div class="photo-card" onclick="openLb('images/h3.png','Our Lady of Guadalupe · shin')"><img src="images/h3.png" alt="Guadalupe"/><div class="overlay"><p class="overlay-text">Our Lady · shin</p></div></div>
+      <div class="photo-card" onclick="openLb('images/h5.png','Arabic script with florals · back')"><img src="images/h5.png" alt="arabic back"/><div class="overlay"><p class="overlay-text">script & florals · back</p></div></div>
+    </div>
+    <div class="book-cta">
+      <p class="cta-title">Book a Full Day</p>
+      <p class="cta-sub">$1,250 · $200 deposit · up to 8 hours</p>
+      <a class="book-btn" href="book.html">Book Now →</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="divider"></div>
+    <p class="footer-handle">@BillionaireInkk · Instagram & TikTok</p>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLb()">
+  <button class="lb-close">Close ✕</button>
+  <img id="lb-img" src="" alt=""/>
+  <p class="lb-label" id="lb-label"></p>
+</div>
+
+<script>
+function switchTab(cat){
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.category').forEach(function(c){c.classList.remove('active');});
+  document.getElementById('cat-'+cat).classList.add('active');
+  var map=['script','small','medium','halfday','fullday'];
+  document.querySelectorAll('.tab')[map.indexOf(cat)].classList.add('active');
+  window.scrollTo(0,0);
+}
+function openLb(src,label){
+  document.getElementById('lb-img').src=src;
+  document.getElementById('lb-label').textContent=label;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLb(){document.getElementById('lightbox').classList.remove('open');}
+
+// Handle hash links from pricing page
+window.addEventListener('DOMContentLoaded',function(){
+  var hash=window.location.hash.replace('#','');
+  var map={'script':'script','small':'small','medium':'medium','halfday':'halfday','fullday':'fullday'};
+  if(map[hash]) switchTab(map[hash]);
+});
+</script>
+</body>
+</html>
