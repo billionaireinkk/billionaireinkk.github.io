@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lookbook — BillionaireInkk</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="site-header">
+    <img src="images/logo.png" alt="BillionaireInkk logo" class="logo">
+    <div class="brand-name">Lookbook</div>
+  </header>
+
+  <a class="back-link" href="index.html">&larr; Back to Home</a>
+
+  <div class="tabs" role="tablist">
+    <button class="tab-btn active" data-tab="script">Script</button>
+    <button class="tab-btn" data-tab="small">Small</button>
+    <button class="tab-btn" data-tab="medium">Medium</button>
+    <button class="tab-btn" data-tab="half">Half Day</button>
+    <button class="tab-btn" data-tab="full">Full Day</button>
+  </div>
+
+  <div class="tab-panel active" id="tab-script">
+    <p class="hero-sub" style="text-align:left; margin-bottom:16px;">Fine line lettering, quotes, names, and dates. Clean and dainty.</p>
+    <p class="price-amount" style="margin-bottom:16px;">$200–$250</p>
+    <a class="btn btn-primary" href="sms:+14704960350?&body=Hi!%20I%27m%20interested%20in%20booking%20a%20Script%20tattoo.">Book This Style</a>
+  </div>
+
+  <div class="tab-panel" id="tab-small">
+    <p class="hero-sub" style="text-align:left; margin-bottom:16px;">Small symbols, single-element designs, minimalist linework.</p>
+    <p class="price-amount" style="margin-bottom:16px;">$200–$250</p>
+    <a class="btn btn-primary" href="sms:+14704960350?&body=Hi!%20I%27m%20interested%20in%20booking%20a%20Small%20tattoo.">Book This Style</a>
+  </div>
+
+  <div class="tab-panel" id="tab-medium">
+    <p class="hero-sub" style="text-align:left; margin-bottom:16px;">More detailed pieces with added elements, shading, or placement complexity.</p>
+    <p class="price-amount" style="margin-bottom:16px;">$350+</p>
+    <a class="btn btn-primary" href="sms:+14704960350?&body=Hi!%20I%27m%20interested%20in%20booking%20a%20Medium%20tattoo.">Book This Style</a>
+  </div>
+
+  <div class="tab-panel" id="tab-half">
+    <p class="hero-sub" style="text-align:left; margin-bottom:16px;">Larger scale work booked in a half-day session, roughly 3 hours.</p>
+    <p class="price-amount" style="margin-bottom:16px;">$600</p>
+    <a class="btn btn-primary" href="sms:+14704960350?&body=Hi!%20I%27m%20interested%20in%20booking%20a%20Half%20Day%20session.">Book This Style</a>
+  </div>
+
+  <div class="tab-panel" id="tab-full">
+    <p class="hero-sub" style="text-align:left; margin-bottom:16px;">Full day session for large-scale or multi-piece work, roughly 6+ hours.</p>
+    <p class="price-amount" style="margin-bottom:16px;">$1,250</p>
+    <a class="btn btn-primary" href="sms:+14704960350?&body=Hi!%20I%27m%20interested%20in%20booking%20a%20Full%20Day%20session.">Book This Style</a>
+  </div>
+
+  <hr class="divider">
+  <a class="btn btn-outline" href="pricing.html">View Full Pricing</a>
+
+  <footer class="site-footer">
+    &copy; 2026 BillionaireInkk &middot; Inkk Studios LLC
+  </footer>
+
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

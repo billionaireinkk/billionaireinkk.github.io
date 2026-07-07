@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scan to Book — BillionaireInkk</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .qr-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    text-align: center;
+  }
+  .qr-box {
+    background: var(--cream);
+    padding: 24px;
+    border-radius: 4px;
+    margin: 24px 0;
+  }
+  .qr-box img { width: 260px; height: 260px; display: block; }
+  @media print {
+    .no-print { display: none; }
+    body { background: white; color: black; }
+    .qr-page { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="qr-page">
+
+    <img src="images/logo.png" alt="BillionaireInkk logo" class="logo">
+    <div class="brand-name">BillionaireInkk</div>
+    <p class="hero-sub">Scan to book, view the lookbook, and see pricing</p>
+
+    <div class="qr-box">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https://billionaireinkk.github.io" alt="QR code linking to BillionaireInkk website">
+    </div>
+
+    <p style="font-size:13px; color:var(--greige);">billionaireinkk.github.io</p>
+
+    <a class="back-link no-print" href="index.html" style="margin-top:24px;">&larr; Back to Home</a>
+  </div>
+</div>
+</body>
+</html>
