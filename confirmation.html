@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Appointment — BillionaireInkk</title>
+<style>
+  :root{
+    --black:#000000;
+    --cream:#faf8f1;
+    --greige:#a09890;
+    --greige-light:#d9d3cc;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--black);
+    color:var(--cream);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:48px 20px 80px;
+  }
+  .wrap{ width:100%; max-width:480px; }
+  .eyebrow{
+    text-align:center;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    font-size:11px;
+    color:var(--greige);
+    margin-bottom:10px;
+  }
+  .wordmark{
+    text-align:center;
+    font-family:'Georgia', serif;
+    font-style:italic;
+    font-size:28px;
+    letter-spacing:0.02em;
+    color:var(--cream);
+    margin-bottom:36px;
+  }
+  .pass{
+    background:var(--cream);
+    color:var(--black);
+    border-radius:2px;
+    overflow:hidden;
+    box-shadow:0 30px 60px rgba(0,0,0,0.5);
+  }
+  .pass-head{
+    padding:32px 32px 24px;
+    text-align:center;
+    border-bottom:1px dashed var(--greige);
+    position:relative;
+  }
+  .status{
+    display:inline-block;
+    font-size:10px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:#fff;
+    background:var(--black);
+    padding:6px 14px;
+    border-radius:20px;
+    margin-bottom:18px;
+  }
+  .client-label{
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--greige);
+    margin-bottom:6px;
+  }
+  .client-name{
+    font-family:'Georgia', serif;
+    font-size:26px;
+    line-height:1.2;
+  }
+  .notch{
+    position:absolute;
+    width:24px; height:24px;
+    background:var(--black);
+    border-radius:50%;
+    bottom:-13px;
+  }
+  .notch.left{ left:-13px; }
+  .notch.right{ right:-13px; }
+
+  .pass-body{ padding:32px; }
+  .row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:14px 0;
+    border-bottom:1px solid var(--greige-light);
+    gap:16px;
+  }
+  .row:last-child{ border-bottom:none; }
+  .row-label{
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--greige);
+    white-space:nowrap;
+  }
+  .row-value{
+    font-family:'Georgia', serif;
+    font-size:16px;
+    text-align:right;
+  }
+
+  .section{ padding:0 32px 32px; }
+  .section-title{
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--greige);
+    margin-bottom:10px;
+    margin-top:8px;
+  }
+  .location-name{
+    font-family:'Georgia', serif;
+    font-size:19px;
+    margin-bottom:4px;
+  }
+  .location-address{
+    font-size:14px;
+    color:#4a4540;
+    margin-bottom:14px;
+  }
+  .map-link{
+    display:inline-block;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--black);
+    border:1px solid var(--black);
+    padding:9px 18px;
+    border-radius:2px;
+    text-decoration:none;
+  }
+  .notes{
+    font-size:14px;
+    line-height:1.65;
+    color:#333;
+    white-space:pre-wrap;
+  }
+  .deposit-strip{
+    background:var(--greige-light);
+    margin:0 32px 32px;
+    padding:16px 18px;
+    border-radius:2px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .deposit-strip .row-label{ margin-bottom:2px; }
+  .deposit-amt{ font-family:'Georgia', serif; font-size:20px; }
+
+  .footer-note{
+    text-align:center;
+    font-size:12px;
+    color:var(--greige);
+    margin-top:28px;
+    line-height:1.6;
+    padding:0 20px;
+  }
+
+  .missing{
+    text-align:center;
+    color:var(--greige);
+    padding:60px 20px;
+    font-size:14px;
+    line-height:1.7;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Appointment Confirmed</div>
+    <div class="wordmark">BillionaireInkk</div>
+
+    <div id="content"></div>
+
+    <div class="footer-note" id="footerNote" style="display:none;">
+      Questions before your session? Reply to the text you received this link from.
+    </div>
+  </div>
+
+<script>
+// Fixed content — always the same, so it doesn't need to travel through the link.
+// Update these directly if the suite address or notes ever change.
+const LOCATION_NAME = "Purity Salon Suites";
+const ADDRESS = "1626 Virginia Ave, Atlanta, GA 30337";
+
+const PREP_TEXT = "Please eat a full meal beforehand and stay hydrated — it helps you sit comfortably through the session. Avoid alcohol for 24 hours prior. Wear or bring clothing that gives easy access to the area being tattooed. Please arrive on time — if you're running behind, just send a text.\n\nWhen you arrive and park, text me to let me know you're here. Walk over to the suite's front entrance — you'll see a digital touchscreen keypad. Look up \"Billionaire Inkk\" and press call to buzz in. I'll come to the front and walk you back to Suite 15.";
+
+const AFTERCARE_TEXT = "Your INKK Aftercare Tattoo Balm is included with your service — that's your first step to healing right. For full wash + balm instructions, day-by-day care, and what's normal vs. not, read the complete guide here: https://inkkaftercare.com/pages/inkk-aftercare-tattoo-guide\n\nAs with all skincare products, always patch test before use — apply a small amount to your inner wrist and wait 24 hours. Discontinue if any irritation occurs.";
+
+function decodeData(){
+  try{
+    const hash = window.location.hash.slice(1);
+    if(!hash) return null;
+    const json = decodeURIComponent(escape(atob(hash)));
+    return JSON.parse(json);
+  }catch(e){
+    return null;
+  }
+}
+
+function esc(str){
+  const div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+
+function escWithLinks(str){
+  const escaped = esc(str);
+  return escaped.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener" style="color:var(--black); text-decoration:underline;">$1</a>');
+}
+
+const data = decodeData();
+const container = document.getElementById('content');
+
+if(!data || !data.name){
+  container.innerHTML = '<div class="pass"><div class="missing">This confirmation link looks incomplete.<br>Please text your artist for a new link.</div></div>';
+} else {
+  document.getElementById('footerNote').style.display = 'block';
+
+  const mapHref = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(ADDRESS);
+
+  let html = '';
+  html += '<div class="pass">';
+
+  html += '<div class="pass-head"><div class="notch left"></div><div class="notch right"></div>';
+  html += '<div class="status">Deposit Received</div>';
+  html += '<div class="client-label">Booked For</div>';
+  html += '<div class="client-name">' + esc(data.name) + '</div>';
+  html += '</div>';
+
+  html += '<div class="pass-body">';
+  if(data.service){
+    html += '<div class="row"><span class="row-label">Service</span><span class="row-value">' + esc(data.service) + '</span></div>';
+  }
+  if(data.date){
+    html += '<div class="row"><span class="row-label">Date</span><span class="row-value">' + esc(data.date) + '</span></div>';
+  }
+  if(data.time){
+    html += '<div class="row"><span class="row-label">Time</span><span class="row-value">' + esc(data.time) + '</span></div>';
+  }
+  html += '</div>';
+
+  if(data.deposit){
+    html += '<div class="deposit-strip"><div><div class="row-label">Deposit Paid</div></div><div class="deposit-amt">' + esc(data.deposit) + '</div></div>';
+  }
+
+  html += '<div class="section"><div class="section-title">Location</div>';
+  html += '<div class="location-name">' + esc(LOCATION_NAME) + '</div>';
+  html += '<div class="location-address">' + esc(ADDRESS) + '</div>';
+  html += '<a class="map-link" href="' + mapHref + '" target="_blank" rel="noopener">Get Directions</a>';
+  html += '</div>';
+
+  html += '<div class="section"><div class="section-title">Before You Arrive</div><div class="notes">' + escWithLinks(PREP_TEXT) + '</div></div>';
+
+  html += '<div class="section"><div class="section-title">Aftercare Note</div><div class="notes">' + escWithLinks(AFTERCARE_TEXT) + '</div></div>';
+
+  html += '</div>';
+  container.innerHTML = html;
+}
+</script>
+</body>
+</html>
